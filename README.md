@@ -29,7 +29,7 @@ sudo mv graalvm-ce-java17-17.0.12 /usr/lib/jvm/
 ```
 ### Step 5: Configure Environment Variables:
 To use GraalVM, you'll need to configure the environment variables:
-
+ ![Output](graalvm.png)
 1.Open the .bashrc file
 ```
 nano ~/.bashrc
