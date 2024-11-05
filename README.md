@@ -5,6 +5,7 @@ Run the application in this project and compare the performance of Quarkus and S
 ## Springboot (-Pnative):
  ### Install 
 - GRAALVM (https://www.graalvm.org/)
+- Maven (https://maven.apache.org/download.cgi)
 - Docker(https://docs.docker.com/engine/install/ubuntu/)
 
 ##Step 1: GRAALVM Install process for Ubuntu:
@@ -62,6 +63,46 @@ To use GraalVM for native image generation, install the native-image tool:
 gu install native-image
 ```
  ![Output](native-images.png)
+
+
+
+## Step 2:Maven
+
+1. **Update the Package Index**
+   ```bash
+    sudo apt update
+   ```
+2. **Install Maven using APT**
+   Ubuntu's default package repository contains Maven, so you can install it directly using the apt package 
+   manager. To do this, run:
+
+   ```bash
+   sudo apt install maven
+   ```
+This will install Maven and its dependencies.
+
+3. **Verify the Installation**
+   Once Maven is installed, you can verify the installation and check the version of Maven to ensure everything 
+   is set up correctly. Run:
+
+  ```bash
+  mvn -version
+```
+![Output](mvn.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Docker:
 ### Step 1: Update the System
