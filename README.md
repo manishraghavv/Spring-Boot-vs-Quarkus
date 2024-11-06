@@ -154,7 +154,13 @@ You can also run both application and DB from docker, using:
 ```bash
 docker-compose -f src/main/docker/spring.yml up
 ```
-successfully run 
+**successfully run**
+![Output](run1.png)
+![Output](run2.png)
+![Output](databases.png)
+
+
+
 
 
 
