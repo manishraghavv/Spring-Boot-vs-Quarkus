@@ -2,7 +2,7 @@
 [GITHUB] (https://github.com/eugenp/tutorials/tree/master/quarkus-modules/quarkus-vs-springboot)
 ## Objective:
 Run the application in this project and compare the performance of Quarkus and Springboot
-## Springboot (-Pnative):
+## Springboot:
  ### Install 
 - GRAALVM (https://www.graalvm.org/)
 - Maven (https://maven.apache.org/download.cgi)
@@ -130,4 +130,32 @@ Check if Docker is installed and running:
   docker --version
  ```
 ![Output](docker.png)
+
+## SpringBoot
+To build the application, you only need to run the following command in the Spring project root:
+```bash
+ mvn clean package -f pom.xml
+```
+Or this one in case you want to build the native one:
+```bash
+mvn clean package -Pnative -f pom.xml
+```
+In this case, you will need to have the GRAALVM_HOME env variable defined. You only need this if you want to build the image locally. Otherwise, you can build it using docker by leveraging the Spring Boot maven plugin. It will pull a docker image of the GraalVM, and with that, it will create the native image of the app. To do that, run:
+
+```bash
+ mvn clean package spring-boot:build-image -Pnative -f pom.xml
+```
+You can execute the script start_app.sh or start_jvm.sh to run the application locally. In this case, you will need the Mysql DB. You can run it in docker with the command:
+```bash
+ docker run --name mysqldb --network=host -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=baeldung -d mysql:5.7.38 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+```
+You can also run both application and DB from docker, using:
+
+```bash
+docker-compose -f src/main/docker/spring.yml up
+```
+successfully run 
+
+
+
 
