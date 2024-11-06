@@ -160,7 +160,43 @@ docker-compose -f src/main/docker/spring.yml up
 ![Output](databases.png)
 
 
+## Quarkus
 
+The process to build and run the Quarkus application is very similar to the Spring Boot one. First, to create the native image, you also need either the GRAALVM installed and the GRAALVM_HOME env variable set, or we can use docker to build the native image.
+```bash
+./mvnw package -Pnative -Dquarkus.native.container-build=true -f pom.xml
+```
+To start the application locally, use either the scripts start_app.sh and start_jvm.sh with the docker DB:
+```bash
+docker run --name mysqldb --network=host -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=baeldung -d mysql:5.7.38 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+```
+Or use the script to build the docker image of the application, running:
+```bash
+./build.sh
+
+## script content
+## ./mvnw quarkus:add-extension -Dextensions=container-image-docker
+## ./mvnw package -Dquarkus.container-build=true -f pom.xml &&
+## docker build -f src/main/docker/Dockerfile.jvm -t quarkus-project:0.1-SNAPSHOT .
+```
+To build the docker image of the JVM version, and running the following command to the native version:
+```bash
+./build.sh native
+
+## script content
+## ./mvnw quarkus:add-extension -Dextensions=container-image-docker
+## ./mvnw package -Pnative -Dquarkus.native.container-build=true -f pom.xml &&
+## docker build -f src/main/docker/Dockerfile.native -t quarkus-project:0.1-SNAPSHOT .
+```
+Then, once again, you can also run both application and DB from docker, using:
+```bash
+docker-compose -f src/main/docker/quarkus.yml up
+```
+
+**Successfully Run**
+![Output](run3.png)
+![Output](run4.png)
+![Output](db.png)
 
 
 
