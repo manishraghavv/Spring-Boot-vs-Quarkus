@@ -207,5 +207,9 @@ docker-compose -f src/main/docker/quarkus.yml up
 ![Output](test3.png)
 
 ## Jmeter (Quarkus)
+![Output](qtest1.png)
 
+![Output](qtest1.1.png)
+![Output](qtest2.png)
+![Output](qtest3.png)
 
