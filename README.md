@@ -11,57 +11,56 @@ Run the application in this project and compare the performance of Quarkus and S
 ##Step 1: GRAALVM Install process for Ubuntu:
 
  1. **First, update your package lists:**
- 
-   ```bash
-   sudo apt update && sudo apt upgrade
-   ```
+    ```bash
+      sudo apt update && sudo apt upgrade
+    ```
  2. **Download GraalVM**
  Go to the GraalVM Releases page.
  ![Output](graalvm.png)
  3. **Extract the GraalVM Archive:**
   After downloading, extract the archive using the following command:
-   ```
-   tar -xvzf graalvm-ce-java17-linux-amd64-17.0.12.tar.gz
-   ```
+     ```
+       tar -xvzf graalvm-ce-java17-linux-amd64-17.0.12.tar.gz
+     ```
  4. **Move the GraalVM Directory:**
   Move the extracted directory to /usr/lib/jvm:
-   ```bash
-   sudo mv graalvm-ce-java17-17.0.12 /usr/lib/jvm/
-   ```
+    ```bash
+      sudo mv graalvm-ce-java17-17.0.12 /usr/lib/jvm/
+    ```
  5. **Configure Environment Variables:**
  To use GraalVM, you'll need to configure the environment variables:
 
   1.Open the .bashrc file
-   ```bash
-   nano ~/.bashrc
-   ```
+    ```bash
+      nano ~/.bashrc
+    ```
   2.Add the following lines to set GraalVM as the default JDK:
-   ```bash
-   export GRAALVM_HOME=/usr/lib/jvm/graalvm-ce-java17-17.0.12
-   export PATH=$GRAALVM_HOME/bin:$PATH
-   ```
+    ```bash
+      export GRAALVM_HOME=/usr/lib/jvm/graalvm-ce-java17-17.0.12
+      export PATH=$GRAALVM_HOME/bin:$PATH
+    ```
   3.Apply the changes:
-   ```
-   source ~/.bashrc
-   ```
+    ```
+      source ~/.bashrc
+    ```
 
 6. **Set GraalVM as the Default Java Version:**
 To make GraalVM the default Java version
- ```bash
-  sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/graalvm-ce-java17-17.0.12/bin/java 1
-  sudo update-alternatives --config java
- ```
+    ```bash
+     sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/graalvm-ce-java17-17.0.12/bin/java 1
+     sudo update-alternatives --config java
+    ```
 7. **Verify Installation:**
 Check if GraalVM is installed properly:
- ```bash
- java -version
- ```
+   ```bash
+   java -version
+   ```
  ![Output](java-v.png)
 8. **Install Native Image Tool**
 To use GraalVM for native image generation, install the native-image tool:
- ```bash
-  gu install native-image
- ```
+  ```bash
+   gu install native-image
+  ```
  ![Output](native-images.png)
 
 
