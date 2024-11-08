@@ -104,20 +104,20 @@ Install necessary packages for Docker installation:
  ```
 3. **Add Docker’s GPG Key**
 Add Docker’s official GPG key to your system:
- ```bash
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
- ```
+  ```bash
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  ```
 4. **Add the Docker Repository**
 Add Docker’s official repository to the APT sources:
- ```bash
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
- ```
+  ```bash
+   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  ```
 5. **Install Docker**
 Update the package database and install Docker:
- ```bash
- sudo apt update
- sudo apt install docker-ce docker-ce-cli containerd.io
- ```
+  ```bash
+   sudo apt update
+   sudo apt install docker-ce docker-ce-cli containerd.io
+  ```
 6. **Start and Enable Docker**
 Start the Docker service and ensure it starts on boot:
   ```bash
@@ -133,27 +133,27 @@ Check if Docker is installed and running:
 
 ## SpringBoot
 To build the application, you only need to run the following command in the Spring project root:
-```bash
- mvn clean package -f pom.xml
-```
+ ```bash
+  mvn clean package -f pom.xml
+ ```
 Or this one in case you want to build the native one:
-```bash
-mvn clean package -Pnative -f pom.xml
-```
+ ```bash
+  mvn clean package -Pnative -f pom.xml
+ ```
 In this case, you will need to have the GRAALVM_HOME env variable defined. You only need this if you want to build the image locally. Otherwise, you can build it using docker by leveraging the Spring Boot maven plugin. It will pull a docker image of the GraalVM, and with that, it will create the native image of the app. To do that, run:
 
-```bash
- mvn clean package spring-boot:build-image -Pnative -f pom.xml
-```
+ ```bash
+  mvn clean package spring-boot:build-image -Pnative -f pom.xml
+ ```
 You can execute the script start_app.sh or start_jvm.sh to run the application locally. In this case, you will need the Mysql DB. You can run it in docker with the command:
-```bash
- docker run --name mysqldb --network=host -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=baeldung -d mysql:5.7.38 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-```
+ ```bash
+  docker run --name mysqldb --network=host -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=baeldung -d mysql:5.7.38 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+ ```
 You can also run both application and DB from docker, using:
 
-```bash
-docker-compose -f src/main/docker/spring.yml up
-```
+ ```bash
+ docker-compose -f src/main/docker/spring.yml up
+ ```
 **successfully run**
 ![Output](run1.png)
 ![Output](run2.png)
